@@ -27,4 +27,9 @@ class StringCalculatorTest < Minitest::Test
   def test_custom_delimiter
     assert_equal 3, StringCalculator.add("//;\n1;2")
   end
+
+  def test_negative_numbers_raise_exception
+    error = assert_raises(RuntimeError) { StringCalculator.add("1,-2,3,-4") }
+    assert_equal "Negatives not allowed: -2,-4", error.message
+  end
 end
