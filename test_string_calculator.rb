@@ -32,4 +32,8 @@ class StringCalculatorTest < Minitest::Test
     error = assert_raises(RuntimeError) { StringCalculator.add("1,-2,3,-4") }
     assert_equal "Negatives not allowed: -2,-4", error.message
   end
+
+  def test_ignore_large_numbers
+    assert_equal 2, StringCalculator.add("2,1001")
+  end
 end
